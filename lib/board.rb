@@ -29,7 +29,16 @@ class Board
     cells.count{|token| token == "X" || token == "O"}
   end 
   
-  def taken(index)
-    
+  def taken?(index)
+    !(position(index) == " " || position(index) == "")
+  end
+  
+  def valid_move?(index)
+    index.to_i.between?(1,9) && !taken?(index)
+  end
+
+  def update(index, player)
+    cells[index.to_i-1] = player.token
+  end 
   
 end 
